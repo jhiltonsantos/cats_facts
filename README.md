@@ -99,7 +99,7 @@ O site possui uma funcionalidade principal: exibir fatos sobre gatos. Para isso,
 
 1. **Chamada à API:**
    - A função que realiza a chamada à API está localizada em `server/api/meowfacts/facts.ts`.
-   - Esta função chama a API e obtém os dados dos fatos sobre gatos.
+   - Esta função chama a API e obtém os dados dos fatos sobre gatos, ela chama o endpoint count pegando 90 fatos, limite por chamada no endpoint.
 
 2. **Armazenamento dos Dados:**
    - A função `fetchFacts`, que utiliza o Pinia para gerenciamento de estados, é responsável por armazenar os dados obtidos da API.
