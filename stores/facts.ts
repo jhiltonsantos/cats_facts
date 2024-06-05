@@ -7,6 +7,7 @@ export const useFactsStore = defineStore("facts", {
     currentFactIndex: 0,
   }),
   actions: {
+    // fetchFacts realiza uma chamada na API disponível no server e salva dentro de facts
     async fetchFacts() {
       try {
         const response = await $fetch<{ data: MeowFact[] }>(
@@ -22,6 +23,8 @@ export const useFactsStore = defineStore("facts", {
         });
       }
     },
+    // getNextIndexFact altera o valor do index na lista para exibir o próximo
+    // e faz uma nova chamada caso o index da lista já tenha acabado
     async getNextIndexFact() {
       if (this.facts.length > 0) {
         if (this.currentFactIndex === this.facts.length - 1) {
