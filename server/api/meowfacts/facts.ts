@@ -11,8 +11,7 @@ export default defineEventHandler(async () => {
     const data: MeowFact[] = response.data.map((fact) => ({ fact }));
     return data;
   } catch (error) {
-    //TODO: adicionar tela de error
     console.error("Erro ao buscar fatos de gatos:", error);
-    throw error;
+    throw createError({ statusCode: 404, statusMessage: 'Erro ao buscar fatos de gatos', fatal: true })
   }
 });

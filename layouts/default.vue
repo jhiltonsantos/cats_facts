@@ -2,14 +2,25 @@
   <div>
     <NuxtLoadingIndicator />
     <HeaderCatFact />
-    <div class="container mx-auto py-8 px-20">
+    <div class="container mx-auto py-8">
       <slot />
     </div>
-
   </div>
 </template>
 
 <script setup>
 </script>
 
-<style scoped></style>
+<style scoped>
+@media (min-width: 640px) {
+  .container {
+    max-width: 100%;
+  }
+}
+
+@media (min-width: 768px) {
+  .container {
+    max-width: 768px;
+  }
+}
+</style>

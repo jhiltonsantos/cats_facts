@@ -5,7 +5,23 @@
 </template>
 
 <style scoped>
+header {
+  @apply h-[14vh] flex items-center justify-center;
+}
+
 h1 {
-  @apply text-6xl text-center uppercase font-medium;
+  @apply text-4xl text-center uppercase font-medium;
+}
+
+@media (max-width: 639px) {
+  h1 {
+    @apply text-3xl;
+  }
+}
+
+@media (max-width: 497px) {
+  h1 {
+    @apply text-2xl;
+  }
 }
 </style>

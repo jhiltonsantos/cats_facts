@@ -15,8 +15,11 @@ export const useFactsStore = defineStore("facts", {
         this.facts = response as any;
         this.currentFactIndex = 0;
       } catch (error) {
-        //TODO: adicionar tela de error
-        throw error;
+        throw createError({
+          statusCode: 404,
+          statusMessage: "Erro ao buscar fatos de gatos",
+          fatal: true,
+        });
       }
     },
     async getNextIndexFact() {
