@@ -1,5 +1,5 @@
 <template>
-  <transition name="fade" mode="out-in">
+  <transition name="fade" mode="out-in" class="pr-10">
     <div v-if="isLoading">
       <p class="animate-fadeIn">Loading...</p>
     </div>
@@ -23,9 +23,7 @@ const props = defineProps({
 </script>
 
 <style scoped>
-p {
-  margin: 20px 0;
-  @apply text-xl font-normal
+p {@apply text-lg font-medium leading-tight
 }
 
 .fade-enter-active,
@@ -37,4 +35,11 @@ p {
 .fade-leave-to {
   @apply opacity-0;
 }
+
+@media (max-width: 928px) {
+  p {
+    @apply py-5
+  }
+}
+
 </style>
