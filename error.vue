@@ -3,7 +3,7 @@
     <p class="mt-7 text-7xl font-bold">{{ error.statusCode }}</p>
     <p class="mt-7 text-6xl">Oooops.</p>
     <p class="mt-7">{{ error.message }}</p>
-    <button class="btn my-7" @click="handleClearError">Voltar para Home</button>
+    <button class="btn my-7" @click="handleClearError">Back Home</button>
   </div>
 </template>
 

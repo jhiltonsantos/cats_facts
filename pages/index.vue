@@ -1,3 +1,4 @@
+<!-- Index page -->
 <template>
   <div class="grid grid-cols-5">
     <div class="card col-span-2">

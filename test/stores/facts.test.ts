@@ -6,17 +6,17 @@ import { IncomingMessage, ServerResponse } from "http";
 import defineEventHandler from "@/server/api/meowfacts/facts";
 
 describe("Facts Store", () => {
-  it("Faz chamada na api utilizando o store com o pinia", async () => {
-    // URL e endpoint
+  it("Makes a call to the API using the store with Pinia", async () => {
+    // URL and endpoint
     const apiUrl = "https://meowfacts.herokuapp.com";
     const endpoint = "/?count=90";
 
-    // Mock do response
+    // Mock response
     const mockResponse = {
       data: [],
     };
 
-    // Configurações para o nock
+    // Nock settings
     nock(apiUrl).options(endpoint).reply(
       200,
       {},
@@ -27,7 +27,7 @@ describe("Facts Store", () => {
       }
     );
 
-    // Realiza chamada na api via nock
+    // Make API call via nock
     nock(apiUrl).get(endpoint).reply(200, mockResponse);
 
     const req = {} as IncomingMessage;
@@ -36,10 +36,10 @@ describe("Facts Store", () => {
 
     nock(apiUrl).get("/?count=90").reply(200, mockResponse);
 
-    // Chama defineEventHandler da /api/meowfacts/facts
+    // Calls defineEventHandler from /api/meowfacts/facts
     const response = await defineEventHandler(event);
 
-    // Verifica os fatos
+    // Check the facts
     expect(response).toEqual(mockResponse.data);
   });
 });

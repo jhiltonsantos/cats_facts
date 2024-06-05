@@ -3,8 +3,8 @@ import { describe, it, expect } from 'vitest';
 import TextFact from '@/components/TextFact/index.vue';
 
 describe('TextFact', () => {
-  it('Renderiza corretamente quando a key muda', async () => {
-    // Monta o componente
+  it('Correctly renders when the key changes', async () => {
+    // Mounts the component
     const wrapper = mount(TextFact, {
       props: {
         isLoading: false,
@@ -15,7 +15,7 @@ describe('TextFact', () => {
 
     expect(wrapper.text()).toContain('Cats are amazing!');
 
-    //Altera o componente
+    // Changes the component
     await wrapper.setProps({ factKey: 2, fact: 'Cats are wonderful!' });
     expect(wrapper.text()).toContain('Cats are wonderful!');
   });

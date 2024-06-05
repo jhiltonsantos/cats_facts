@@ -1,3 +1,4 @@
+<!-- Images component -->
 <template>
   <img src="/img/kitty1.webp" alt="Kitty1" class="images col-span-2" />
   <div class="grid grid-rows-2 gap-6 h-full">

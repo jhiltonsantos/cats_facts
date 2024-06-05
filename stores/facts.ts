@@ -7,7 +7,7 @@ export const useFactsStore = defineStore("facts", {
     currentFactIndex: 0,
   }),
   actions: {
-    // fetchFacts realiza uma chamada na API disponível no server e salva dentro de facts
+    // fetchFacts makes a call to the API available on the server and saves it inside facts
     async fetchFacts() {
       try {
         const response = await $fetch<{ data: MeowFact[] }>(
@@ -18,13 +18,13 @@ export const useFactsStore = defineStore("facts", {
       } catch (error) {
         throw createError({
           statusCode: 404,
-          statusMessage: "Erro ao buscar fatos de gatos",
+          statusMessage: "Error fetching cat facts",
           fatal: true,
         });
       }
     },
-    // getNextIndexFact altera o valor do index na lista para exibir o próximo
-    // e faz uma nova chamada caso o index da lista já tenha acabado
+    // getNextIndexFact changes the index value in the list to display the next one
+    // and makes a new call if the list's index has already reached its end.
     async getNextIndexFact() {
       if (this.facts.length > 0) {
         if (this.currentFactIndex === this.facts.length - 1) {

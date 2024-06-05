@@ -5,17 +5,17 @@ import apiHandler from "@/server/api/meowfacts/facts";
 import { IncomingMessage, ServerResponse } from "http";
 
 describe("API Handler", () => {
-  it("Fazer chamada na api meowfacts via server", async () => {
-    // URL e endpoint
+  it("Make a call to the meowfacts API via server", async () => {
+    // URL and endpoint
     const apiUrl = "https://meowfacts.herokuapp.com";
     const endpoint = "/?count=90";
 
-    // Mock do response
+    // Mock response
     const mockResponse = {
       data: ["Fact 1", "Fact 2"],
     };
 
-    // Configurações para o nock
+    // Nock settings
     nock(apiUrl).options(endpoint).reply(
       200,
       {},
@@ -26,14 +26,14 @@ describe("API Handler", () => {
       }
     );
 
-    // Realiza chamada na api via nock
+    // Make API call via nock
     nock(apiUrl).get(endpoint).reply(200, mockResponse);
 
     const req = {} as IncomingMessage;
     const res = {} as ServerResponse;
     const event = createEvent(req, res);
 
-    // Chama API
+    // Call API
     const response = await apiHandler(event);
 
     expect(response).toEqual(mockResponse.data.map((fact) => ({ fact })));

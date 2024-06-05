@@ -1,3 +1,4 @@
+<!-- Layout default -->
 <template>
   <div>
     <NuxtLoadingIndicator />

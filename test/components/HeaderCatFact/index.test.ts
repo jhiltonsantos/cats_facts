@@ -3,12 +3,12 @@ import { describe, it, expect } from 'vitest';
 import HeaderComponent from '@/components/HeaderCatFact/index.vue';
 
 describe('HeaderComponent', () => {
-  it('Renderezia o texto corretamente', () => {
+  it('Renders the text correctly', () => {
 
-    // Monta o componente
+    // Mounts the component
     const wrapper = mount(HeaderComponent);
 
-    // Verifica se o texto é renderizado
+    // Checks if the text is rendered
     expect(wrapper.text()).toContain('The Defsafe Cat Facts Page');
   });
 });

@@ -3,21 +3,21 @@ import { describe, it, expect, vi } from 'vitest';
 import ButtonGetFact from '@/components/ButtonGetFact/index.vue';
 
 describe('ButtonGetFact', () => {
-  it('Chama o onClick prop quando clicado', async () => {
-    // Mock para passar a prop onClick
+  it('Calls the onClick prop when clicked', async () => {
+    // Mock to pass the onClick prop
     const onClickMock = vi.fn();
 
-    // Monta o componente
+    // Mounts the component
     const wrapper = mount(ButtonGetFact, {
       props: {
         onClick: onClickMock
       }
     });
 
-    // Simula o clique do botão
+    // Simulates button click
     await wrapper.find('button').trigger('click');
 
-    // Verifica se o mock foi chamado
+    // Checks if the mock was called
     expect(onClickMock).toHaveBeenCalled();
   });
 });

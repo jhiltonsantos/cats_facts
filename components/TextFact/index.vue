@@ -1,3 +1,4 @@
+<!-- Text Facts component -->
 <template>
   <transition name="fade" mode="out-in" class="pr-10">
     <div v-if="isLoading">

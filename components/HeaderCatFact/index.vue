@@ -1,3 +1,4 @@
+<!-- Header component -->
 <template>
   <header>
     <h1>The Defsafe Cat Facts Page</h1>
