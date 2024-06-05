@@ -7,7 +7,7 @@
 
 <style scoped>
 header {
-  @apply h-[14vh] flex items-center justify-center;
+  @apply h-[16vh] flex items-center justify-center;
 }
 
 h1 {
