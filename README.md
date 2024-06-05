@@ -1,240 +1,208 @@
 ﻿<h1 align="center">Cats Facts - Hilton Santos</h1>
 <h1 align="center">Defsafe Cat Facts</h1>
-<p align="center">Teste básico de código da DefSafe</p>
+<p align="center">Basic code test for DefSafe</p>
 <p align="center"><a>https://cats-facts-five.vercel.app/</a></p>
 
-  
-# 1. Visão Geral
+# 1. Overview
 
-O site foi desenvolvido com Nuxt 3 para o teste básico de código da DefSafe. Ele pode ser acessado através deste [link](https://cats-facts-five.vercel.app/), o deploy foi realizado utilizando o Vercel. A página apresenta um texto que exibe um fato sobre gatos e um botão que gera uma nova frase, com os dados fornecidos pela API [meowfacts](https://meowfacts.herokuapp.com). 
+The site was developed with Nuxt 3 for the basic code test by DefSafe. It can be accessed via this [link](https://cats-facts-five.vercel.app/), deployed using Vercel. The page displays a text showing a cat fact and a button that generates a new fact, with data provided by the API [meowfacts](https://meowfacts.herokuapp.com).
 
-Para mais detalhes sobre o teste acesse esse [repositório](https://github.com/def-safe/defsafe-developers-test/?tab=readme-ov-file) fornecido pela DefSafe.
+For more details about the test, access this [repository](https://github.com/def-safe/defsafe-developers-test/?tab=readme-ov-file) provided by DefSafe.
 
-# 2. Arquitetura do aplicativo
+# 2. Application Architecture
 
-A arquitetura do Cats Facts foi projetada para garantir que os dados da API sejam capturados e armazenados em uma lista gerenciada pelo Pinia, um gerenciador de estados. Sempre que o usuário clica no botão, ele avança para o próximo item dessa lista. Ao chegar no último item, a função realiza uma nova chamada à API para obter mais dados.
+The architecture of Cats Facts was designed to ensure that data from the API is captured and stored in a list managed by Pinia, a state manager. Whenever the user clicks the button, it advances to the next item in this list. Upon reaching the last item, the function makes a new API call to retrieve more data.
 
+### 2.1.1. Modules
 
-### 2.1.1. Módulos
+Here are the modules used in the project:
 
-Aqui estão os módulos utilizadas no projeto:
+- [@nuxtjs/tailwindcss](https://nuxt.com/modules/tailwindcss)
 
--   [@nuxtjs/tailwindcss](https://nuxt.com/modules/tailwindcss)
+  Tailwind module, which is a utility-first CSS framework that simplifies web development by providing predefined classes for styling.
 
-Módulo do Tailwind, que é uma estrutura CSS utilitária que simplifica o desenvolvimento web ao fornecer classes pré-definidas para estilização.
+- [@pinia](https://nuxt.com/modules/pinia)
 
--   [@pinia](https://nuxt.com/modules/pinia)
+  State management module for Vue.js.
 
-Módulo de gestão de estado para o Vue.js.
+- [@nuxtjs/google-fonts](https://nuxt.com/modules/google-fonts)
 
--   [@nuxtjs/google-fonts](https://nuxt.com/modules/google-fonts)
+  Google Fonts module for Nuxt, used to download the Jost font.
 
-Módulo do Google Fonts para o Nuxt, utilizada para baixar a fonte Jost.
+- [@nuxt-icon](https://nuxt.com/modules/icon)
 
--   [@nuxt-icon](https://nuxt.com/modules/icon)
+  Nuxt Icon module for the Nuxt.js framework that simplifies the integration and use of icons in Vue.js projects.
 
-Módulo do Nuxt Icon para o framework Nuxt.js que simplifica a integração e o uso de ícones em projetos Vue.js.
+- [@nuxt/test-utils](https://nuxt.com/modules/test-utils)
 
--   [@nuxt/test-utils](https://nuxt.com/modules/test-utils)
+  Testing utilities module for Nuxt.js projects, allowing testing of components, pages, and functionalities.
 
-Módulo de utilitários de teste para projetos Nuxt.js, permitindo testar componentes, páginas e funcionalidades
+- [@nock](https://github.com/nock/nock)
 
+  HTTP request mocking module for testing in Nuxt.js projects.
 
--   [@nock](https://github.com/nock/nock)
+- [@vitest](https://vitest.dev/)
 
-Módulo de simulação de solicitações HTTP para testes em projetos Nuxt.js.
+  Vitest module, an integration testing tool for Nuxt.js projects.
 
--   [@vitest](https://vitest.dev/)
+### 2.1.2. Components
 
-Módulo do Vitest ferramenta de teste de integração para projetos Nuxt.js
+Here are the components created for the test execution:
 
+- **`ButtonGetFact`:**
 
-### 2.1.2. Componentes
+	| Name          | Path                      | Params |
+	|---------------|---------------------------|--------|
+	| ButtonGetFact | components\ButtonGetFact  | onClick |
 
-Aqui estão os componentes criados para execução do teste.
+	**Description:** Button component with an onClick function, displaying a loading icon from Material Symbols and a text to fetch the next fact.
 
--  **`ButtonGetFact`:**
+- **`HeaderCatFact`:**
 
-	| name | path | params |
-	|--|--| -- |
-	| ButtonGetFact | components\ButtonGetFact | onClick
+	| Name          | Path                      | Params |
+	|---------------|---------------------------|--------|
+	| HeaderCatFact | components\HeaderCatFact  | -      |
 
+	**Description:** Header displayed on the index page containing the text "The Defsafe Cat Facts Page".
 
-	**Descrição:** Componente de botão com uma função onClick, que exibe um ícone de carregamento do Material Symbols e um texto para obter o próximo fato.
+- **`ImagesCats`:**
 
+	| Name        | Path                    | Params |
+	|-------------|-------------------------|--------|
+	| ImagesCats  | components\ImagesCats   | -      |
 
--  **`HeaderCatFact`:**
-	
-	| name | path | params |
-	|--|--| -- |
-	| HeaderCatFact | components\HeaderCatFact | -
-	
+	**Description:** Component that displays three images of cats in WebP format.
 
-	**Descrição:** Header exido na tela de index que contém o texto "The Defsafe Cat Facts Page".
+- **`TextFact`:**
 
+	| Name        | Path                    | Params                   |
+	|-------------|-------------------------|--------------------------|
+	| TextFact    | components\TextFact     | factKey, isLoading, fact |
 
--  **`ImagesCats`:**
-	
-	| name | path | params |
-	|--|--| -- |
-	| ImagesCats | components\ImagesCats | -
+	**Description:** Component that displays the fact texts fetched from the API.
 
-	**Descrição:** Componente que exibe três imagens de gatos no formato WebP.
+# 3. Features
 
+The site has one main feature: displaying cat facts. For this, data is consumed from the [meowfacts](https://meowfacts.herokuapp.com) API.
 
--  **`TextFact`:**
-	
-	| name | path | params |
-	|--|--| -- |
-	| TextFact | components\TextFact | factKey, isLoading, fact
-	
-	**Descrição:** Componente que exibe os textos de fatos vindos da API.
+## Feature Structure
 
+1. **API Call:**
+   - The function that makes the API call is located in `server/api/meowfacts/facts.ts`.
+   - This function calls the API and retrieves cat facts data by calling the endpoint count and fetching 90 facts, the limit per call on the endpoint.
 
-# 3. Funcionalidades
+2. **Data Storage:**
+   - The `fetchFacts` function, which uses Pinia for state management, is responsible for storing the data obtained from the API.
+   - The data is stored in a list called `facts`.
 
-O site possui uma funcionalidade principal: exibir fatos sobre gatos. Para isso, são consumidos os dados da API [meowfacts](https://meowfacts.herokuapp.com).
+3. **Displaying Facts:**
+   - A function called `getNextIndexFact` is responsible for displaying a new fact saved in `facts` on the screen.
+   - This function uses an attribute called `currentFactIndex`, which stores the current position within the `facts` list.
 
-## Estrutura das Funcionalidades
+4. **Updating Facts:**
+   - When `getNextIndexFact` reaches the end of the `facts` list, it calls the `fetchFacts` function again.
+   - The `fetchFacts` function replaces the `facts` list with a new one, ensuring that new facts are always available for display.
 
-1. **Chamada à API:**
-   - A função que realiza a chamada à API está localizada em `server/api/meowfacts/facts.ts`.
-   - Esta função chama a API e obtém os dados dos fatos sobre gatos, ela chama o endpoint count pegando 90 fatos, limite por chamada no endpoint.
+# 4. User Interface Design
 
-2. **Armazenamento dos Dados:**
-   - A função `fetchFacts`, que utiliza o Pinia para gerenciamento de estados, é responsável por armazenar os dados obtidos da API.
-   - Os dados são armazenados em uma lista chamada `facts`.
+The following outlines the main aspects of the site's user interface design:
 
-3. **Exibição dos Fatos:**
-   - Uma função chamada `getNextIndexFact` é responsável por apresentar na tela um novo fato salvo dentro de `facts`.
-   - Esta função utiliza um atributo chamado `currentFactIndex`, que armazena a posição atual dentro da lista `facts`.
+## 4.1. Prototype
 
-4. **Atualização dos Fatos:**
-   - Quando `getNextIndexFact` alcança o final da lista `facts`, ela chama a função `fetchFacts` novamente.
-   - A função `fetchFacts` substitui a lista de `facts` por uma nova, garantindo que sempre haja novos fatos disponíveis para exibição.
+This is the prototype provided in the test:
 
+<p align="center"> <img src="https://i.postimg.cc/Px0X8Zgk/design.png" alt="image_folders"> </p>
 
+## 4.2. Color Palette
 
+The color palette provided for the test can be accessed through this [link](https://coolors.co/palette/22223b-4a4e69-9a8c98-c9ada7-f2e9e4).
 
-# 4. Design da Interface do Usuário
+## 4.2. Fonts
 
-A seguir, são apresentados os principais aspectos do design da interface do site:
+The font used in the project is [Jost](https://fonts.google.com/specimen/Jost), as specified in the test.
 
+## 4.3. Responsiveness
 
-## 4.1. Protótipo
+The site was developed using Tailwind CSS, with three screen versions for different devices: computer, tablet, and mobile. All components, layouts, and pages were adjusted to ensure optimized display on each type of device.
 
-Esse é o protótipo fornecido no teste:
+## 4.4. Animations
 
-<p  align="center"> <img  src="https://i.postimg.cc/Px0X8Zgk/design.png"  alt="image_folders"> </p>
+FadeIn and fadeOut animations were applied to the fact text component, using Tailwind CSS to control these transitions.
 
-## 4.2. Palheta de Cores
+## 4.5. Result
 
-A palheta de  fornecidas para o teste podem ser acessar através desse [link](https://coolors.co/palette/22223b-4a4e69-9a8c98-c9ada7-f2e9e4) .
+The result of the site looks like this:
 
-## 4.2. Fontes
+<p align="center"> <img src="https://i.postimg.cc/RhfM1hmJ/image-teste.png)](https://postimg.cc/hQDWcSfK" alt="image_folders"> </p>
 
-As fonte utilizada no projeto foi a [Jost](https://fonts.google.com/specimen/Jost) conforme foi colocado no teste.
+The site can be accessed via this [link](https://cats-facts-five.vercel.app/).
 
-## 4.3. Responsividade
+# 5. Testing
 
-O site foi desenvolvido utilizando Tailwind CSS, com três versões de telas para diferentes dispositivos: computador, tablet e celular. Todos os componentes, layouts e páginas foram ajustados para garantir uma exibição otimizada em cada tipo de dispositivo.
+Tests were conducted on components, API calls on the server, and the store. These tests can be found in the `test/` folder. To run them, use the command `npm run vitest` or `yarn vitest`.
 
-## 4.4. Animações
+The tests include:
 
-As animações de fadeIn e fadeOut foram aplicadas ao componente de texto dos fatos, utilizando Tailwind CSS para controlar essas transições.
+1. **Unit Tests for Components:**
+   - Verification that the components are being rendered correctly.
 
-## 4.5. Resultado
-O resultado do site ficou dessa forma: 
+2. **API Call Tests:**
+   - Verification that the API endpoint is being called successfully.
+   - Use of the `nock` module to mock API calls.
 
-<p  align="center"> <img  src="https://i.postimg.cc/RhfM1hmJ/image-teste.png)](https://postimg.cc/hQDWcSfK"  alt="image_folders"> </p>
+3. **Store Tests with Pinia:**
+   - Verification that the store is being created and managed correctly with Pinia.
 
-O site pode ser acessado através desse [link](https://cats-facts-five.vercel.app/).
+# 6. Installation and Setup
 
-# 5. Testes
+To start working with the project, follow the steps below:
 
-Foram realizados testes nos componentes, chamadas da API no servidor e no store. Esses testes podem ser encontrados na pasta `test/`. Para executá-los, basta utilizar o comando `npm run vitest` ou `yarn vitest`.
+## 6.1. Clone the Repository
 
-Os testes incluem:
-
-1. **Testes Unitários dos Componentes:**
-   - Verificação se os componentes estão sendo renderizados corretamente.
-
-2. **Testes das Chamadas da API:**
-   - Verificação se o endpoint da API está sendo chamado com sucesso.
-   - Utilização do módulo `nock` para simular chamadas à API.
-
-3. **Testes do Store com Pinia:**
-   - Verificação se o store está sendo criado e gerenciado corretamente com Pinia.
-
-# 6. Instalação e configuração
-
-Para começar a trabalhar com o projeto, siga os passos abaixo:
-
-  
-
-## 6.1. Clone o repositório:
-
-O primeiro passo é clonar o repositório do projeto para sua máquina local. Isso pode ser feito executando o seguinte comando no terminal para clonar usando o HTTPS:
+The first step is to clone the project repository to your local machine. This can be done by running the following command in the terminal to clone using HTTPS:
 
 ```bash
-
-git  clone  https://github.com/jhiltonsantos/cats_facts.git
-
+git clone https://github.com/jhiltonsantos/cats_facts.git
 ```
 
-Isso criará uma cópia local do repositório em seu sistema, permitindo que você trabalhe no código e acompanhe as atualizações do projeto.
+This will create a local copy of the repository on your system, allowing you to work on the code and track project updates.
 
-  
-## 6.2. Navegue até o diretório raiz do projeto.
+## 6.2. Navigate to the Project Root Directory
 
-Após clonar o repositório, você precisará navegar até o diretório raiz do projeto para continuar com a instalação e configuração. Isso é necessário para acessar e manipular os arquivos e pastas relacionados ao projeto.
+After cloning the repository, you will need to navigate to the project root directory to proceed with the installation and setup. This is necessary to access and manipulate the files and folders related to the project.
 
+## 6.3. Install Dependencies
 
-## 6.3. Instale as dependências:
+Before starting development, it's important to ensure that all project dependencies are installed correctly. This can be done by running the following command in the terminal, depending on your preferred package manager:
 
-Antes de iniciar o desenvolvimento, é importante garantir que todas as dependências do projeto estejam instaladas corretamente. Isso pode ser feito executando o seguinte comando no terminal, dependendo da sua preferência de gerenciador de pacotes:
-
-
-Para npm:
+For npm:
 
 ```bash
-
 npm install
-
 ```
 
-ou, se preferir usar Yarn:
+Or, if you prefer to use Yarn:
 
 ```bash
-
 yarn install
-
 ```
 
-Este comando irá instalar todas as dependências listadas no arquivo `package.json` do projeto, garantindo que você tenha acesso a todas as bibliotecas e ferramentas necessárias para o desenvolvimento.
+This command will install all dependencies listed in the project's `package.json` file, ensuring you have access to all the necessary libraries and tools for development.
 
-  
+## 6.4. Start the Development Server
 
-## 6.4. Inicie o servidor de desenvolvimento:
+To begin developing and testing the application, you need to start the development server. This server provides a local environment to run and test the site in real-time.
 
-Para começar a desenvolver e testar o aplicativo, é necessário iniciar o servidor de desenvolvimento. Este servidor fornece um ambiente local para executar e testar o site em tempo real.
-
-  
-
-Utilize npm:
+Use npm:
 
 ```bash
-
 npm run dev
-
 ```
 
-ou Yarn:
+Or Yarn:
 
 ```bash
-
 yarn dev
-
 ```
 
-Isso iniciará o servidor de desenvolvimento e permitirá que você comece a acessar o servidor local para desenvolver e testar o projeto.
+This will start the development server and allow you to begin accessing the local server to develop and test the project.
