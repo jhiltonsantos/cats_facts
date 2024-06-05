@@ -1,0 +1,50 @@
+:root {
+  --background-color: #c9ada7;
+  --secondary-color: #22223b;
+  --button-color: #4a4e69;
+  --primary-text-color: #9a8c98;
+  --secondary-text-color: #f2e9e4;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  background-color: var(--background-color);
+}
+
+header {
+  background-color: var(--secondary-color);
+  color: var(--secondary-text-color);
+  @apply h-[16vh] flex items-center justify-center;
+}
+
+h1,
+h2,
+h3,
+p,
+span {
+  font-family: Jost;
+}
+
+h3 {
+  color: var(--secondary-color);
+}
+
+p {
+  color: var(--button-color);
+}
+
+img {
+  @apply object-cover h-full rounded-xl;
+}
+
+.btn {
+  background-color: var(--button-color);
+  color: var(--secondary-text-color);
+  @apply px-4 py-3 rounded-md shadow-md shadow-neutral-900 uppercase;
+}
+
+@layer components {
+}
