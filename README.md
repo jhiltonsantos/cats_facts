@@ -137,7 +137,7 @@ The result of the site looks like this:
 
 The site can be accessed via this [link](https://cats-facts-five.vercel.app/).
 
-# 5. Testing
+# 5. Tests
 
 Tests were conducted on components, API calls on the server, and the store. These tests can be found in the `test/` folder. To run them, use the command `npm run vitest` or `yarn vitest`.
 
