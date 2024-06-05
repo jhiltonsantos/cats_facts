@@ -1,13 +1,12 @@
-﻿<h1 align="center">Cats Facts</h1>
-<h1 align="center">
-  <a href="<https://nuxt.com/>">🔗 Nuxt 3</a>
-</h1>
-<p align="center">Site para visualizar fatos sobre gatos com base no teste da DefSafe</a></p>
+﻿<h1 align="center">Cats Facts - Hilton Santos</h1>
+<h1 align="center">Defsafe Cat Facts</h1>
+<p align="center">Teste básico de código da DefSafe</p>
+<p align="center"><a>https://cats-facts-five.vercel.app/</a></p>
 
   
 # 1. Visão Geral
 
-O site foi desenvolvido com Nuxt 3 para o teste básico de código da DefSafe. Ele pode ser acessado através deste [link](https://www.npmjs.com). A página apresenta um texto que exibe um fato sobre gatos e um botão que gera uma nova frase, com os dados fornecidos pela API [meowfacts](https://meowfacts.herokuapp.com). 
+O site foi desenvolvido com Nuxt 3 para o teste básico de código da DefSafe. Ele pode ser acessado através deste [link](https://cats-facts-five.vercel.app/), o deploy foi realizado utilizando o Vercel. A página apresenta um texto que exibe um fato sobre gatos e um botão que gera uma nova frase, com os dados fornecidos pela API [meowfacts](https://meowfacts.herokuapp.com). 
 
 Para mais detalhes sobre o teste acesse esse [repositório](https://github.com/def-safe/defsafe-developers-test/?tab=readme-ov-file) fornecido pela DefSafe.
 
@@ -122,36 +121,58 @@ O site possui uma funcionalidade principal: exibir fatos sobre gatos. Para isso,
 A seguir, são apresentados os principais aspectos do design da interface do site:
 
 
-## 5.1. Protótipo
+## 4.1. Protótipo
 
 Esse é o protótipo fornecido no teste:
 
 <p  align="center"> <img  src="https://i.postimg.cc/Px0X8Zgk/design.png"  alt="image_folders"> </p>
 
-## 5.2. Palheta de Cores
+## 4.2. Palheta de Cores
 
 A palheta de  fornecidas para o teste podem ser acessar através desse [link](https://coolors.co/palette/22223b-4a4e69-9a8c98-c9ada7-f2e9e4) .
 
-## 5.2. Fontes
+## 4.2. Fontes
 
 As fonte utilizada no projeto foi a [Jost](https://fonts.google.com/specimen/Jost) conforme foi colocado no teste.
 
+## 4.3. Responsividade
 
-# 5.3. Resultado
+O site foi desenvolvido utilizando Tailwind CSS, com três versões de telas para diferentes dispositivos: computador, tablet e celular. Todos os componentes, layouts e páginas foram ajustados para garantir uma exibição otimizada em cada tipo de dispositivo.
+
+## 4.4. Animações
+
+As animações de fadeIn e fadeOut foram aplicadas ao componente de texto dos fatos, utilizando Tailwind CSS para controlar essas transições.
+
+## 4.5. Resultado
 O resultado do site ficou dessa forma: 
 
 <p  align="center"> <img  src="https://i.postimg.cc/RhfM1hmJ/image-teste.png)](https://postimg.cc/hQDWcSfK"  alt="image_folders"> </p>
 
-O site pode ser acessado através desse link.
+O site pode ser acessado através desse [link](https://cats-facts-five.vercel.app/).
 
+# 5. Testes
 
-# 7. Instalação e configuração
+Foram realizados testes nos componentes, chamadas da API no servidor e no store. Esses testes podem ser encontrados na pasta `test/`. Para executá-los, basta utilizar o comando `npm run vitest` ou `yarn vitest`.
+
+Os testes incluem:
+
+1. **Testes Unitários dos Componentes:**
+   - Verificação se os componentes estão sendo renderizados corretamente.
+
+2. **Testes das Chamadas da API:**
+   - Verificação se o endpoint da API está sendo chamado com sucesso.
+   - Utilização do módulo `nock` para simular chamadas à API.
+
+3. **Testes do Store com Pinia:**
+   - Verificação se o store está sendo criado e gerenciado corretamente com Pinia.
+
+# 6. Instalação e configuração
 
 Para começar a trabalhar com o projeto, siga os passos abaixo:
 
   
 
-## 7.1. Clone o repositório:
+## 6.1. Clone o repositório:
 
 O primeiro passo é clonar o repositório do projeto para sua máquina local. Isso pode ser feito executando o seguinte comando no terminal para clonar usando o HTTPS:
 
@@ -164,12 +185,12 @@ git  clone  https://github.com/jhiltonsantos/cats_facts.git
 Isso criará uma cópia local do repositório em seu sistema, permitindo que você trabalhe no código e acompanhe as atualizações do projeto.
 
   
-## 7.2. Navegue até o diretório raiz do projeto.
+## 6.2. Navegue até o diretório raiz do projeto.
 
 Após clonar o repositório, você precisará navegar até o diretório raiz do projeto para continuar com a instalação e configuração. Isso é necessário para acessar e manipular os arquivos e pastas relacionados ao projeto.
 
 
-## 7.3. Instale as dependências:
+## 6.3. Instale as dependências:
 
 Antes de iniciar o desenvolvimento, é importante garantir que todas as dependências do projeto estejam instaladas corretamente. Isso pode ser feito executando o seguinte comando no terminal, dependendo da sua preferência de gerenciador de pacotes:
 
@@ -194,7 +215,7 @@ Este comando irá instalar todas as dependências listadas no arquivo `package.j
 
   
 
-## 7.4. Inicie o servidor de desenvolvimento:
+## 6.4. Inicie o servidor de desenvolvimento:
 
 Para começar a desenvolver e testar o aplicativo, é necessário iniciar o servidor de desenvolvimento. Este servidor fornece um ambiente local para executar e testar o site em tempo real.
 
